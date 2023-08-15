@@ -65,4 +65,12 @@ public class DetalleTransaccion {
                 ", subtotal=" + subtotal +
                 '}';
     }
+
+    /**
+     * Metodo para regresar la cantidad de produto en el Detalle de Venta
+     * Solo se utiliza cuando se elimina un Detalle de Venta
+     */
+    public void devolverInventario() {
+        producto.setCantidadInventario(producto.getCantidadInventario()+cantidadProducto);
+    }
 }

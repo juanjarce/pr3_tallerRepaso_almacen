@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="693.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.almacen.controllers.RegistroClientesController">
+   <children>
+      <Label layoutX="361.0" layoutY="14.0" text="Gestion de Clientes">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Separator layoutX="67.0" layoutY="42.0" prefHeight="5.0" prefWidth="772.0" />
+      <SplitPane dividerPositions="0.548885077186964" layoutX="47.0" layoutY="63.0" orientation="VERTICAL" prefHeight="585.0" prefWidth="794.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="333.0" prefWidth="669.0">
+               <children>
+                  <Label layoutX="9.0" layoutY="8.0" text="Informacion del Cliente">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="14.0" layoutY="32.0" prefHeight="5.0" prefWidth="751.0" />
+                  <Label layoutX="9.0" layoutY="46.0" text="Nombres :" />
+                  <Label layoutX="9.0" layoutY="80.0" text="Apellidos :" />
+                  <Label layoutX="9.0" layoutY="114.0" text="Identificacion:" />
+                  <TextField fx:id="inputNombres" layoutX="88.0" layoutY="42.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese los nombres del cliente" />
+                  <TextField fx:id="inputApellidos" layoutX="88.0" layoutY="76.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese los apellidos del cliente" />
+                  <TextField fx:id="inputIdentificacion" layoutX="88.0" layoutY="110.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese la identificacion del cliente" />
+                  <Separator layoutX="14.0" layoutY="214.0" prefHeight="5.0" prefWidth="751.0" />
+                  <Button fx:id="btnNuevo" layoutX="224.0" layoutY="233.0" mnemonicParsing="false" onAction="#nuevoClienteEvent" prefHeight="25.0" prefWidth="109.0" text="NUEVO" />
+                  <Button fx:id="btnAgregar" layoutX="470.0" layoutY="233.0" mnemonicParsing="false" onAction="#agregarClienteEvent" prefHeight="25.0" prefWidth="133.0" text="AGREGAR" />
+                  <Button fx:id="btnActualizar" layoutX="345.0" layoutY="233.0" mnemonicParsing="false" onAction="#actualizarClienteEvent" prefHeight="25.0" prefWidth="116.0" text="ACTUALIZAR" />
+                  <Label layoutX="431.0" layoutY="46.0" text="Direccion:" />
+                  <Label layoutX="432.0" layoutY="80.0" text="Telefono:" />
+                  <Label layoutX="432.0" layoutY="114.0" text="Tipo Cliente:" />
+                  <TextField fx:id="inputDireccion" layoutX="508.0" layoutY="42.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el usuario del cliente" />
+                  <Button fx:id="btnBuscar" layoutX="345.0" layoutY="268.0" mnemonicParsing="false" onAction="#buscarClienteEvent" prefHeight="25.0" prefWidth="116.0" text="BUSCAR" />
+                  <ComboBox fx:id="comboTipoCliente" layoutX="508.0" layoutY="110.0" onAction="#refrescarAtributosTipoCliente" prefHeight="25.0" prefWidth="257.0" />
+                  <Label fx:id="labelEmail" layoutX="9.0" layoutY="146.0" text="Email:" />
+                  <TextField fx:id="inputEmail" layoutX="88.0" layoutY="142.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el email del cliente" />
+                  <Label fx:id="labelNit" layoutX="434.0" layoutY="146.0" text="Nit:" />
+                  <TextField fx:id="inputNit" layoutX="508.0" layoutY="142.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el nit del cliente" />
+                  <Label fx:id="labelFechaNacimiento" layoutX="9.0" layoutY="179.0" text="Fecha de Nacimiento:" />
+                  <DatePicker fx:id="dateFechaNacimiento" layoutX="130.0" layoutY="175.0" onAction="#getFechaNacimiento" prefHeight="25.0" prefWidth="214.0" />
+                  <TextField fx:id="inputTelefono" layoutX="508.0" layoutY="76.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el telefono del cliente" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="254.0" prefWidth="669.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="9.0" text="Listado de Clientes">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="17.0" layoutY="33.0" prefHeight="5.0" prefWidth="751.0" />
+                  <TableView fx:id="tableClientes" layoutX="14.0" layoutY="41.0" onMouseClicked="#seleccionarClienteEvent" prefHeight="180.0" prefWidth="761.0">
+                    <columns>
+                      <TableColumn fx:id="columnNombres" prefWidth="88.0" text="Nombres" />
+                        <TableColumn fx:id="columnApellidos" prefWidth="93.0" text="Apellidos" />
+                      <TableColumn fx:id="columnIdentificacion" prefWidth="145.0" text="Identificacion" />
+                        <TableColumn fx:id="columnDireccion" prefWidth="182.0" text="Direccion" />
+                        <TableColumn fx:id="columnTelefono" minWidth="5.0" prefWidth="105.0" text="Telefono" />
+                        <TableColumn fx:id="columnTipoCliente" prefWidth="147.0" text="TipoCliente" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="btnEliminar" layoutX="674.0" layoutY="230.0" mnemonicParsing="false" onAction="#eliminarClienteEvent" prefHeight="25.0" prefWidth="101.0" text="Eliminar" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Button fx:id="btnVolver" layoutX="785.0" layoutY="654.0" mnemonicParsing="false" onAction="#volverEvent" text="VOLVER" />
+   </children>
+</AnchorPane>

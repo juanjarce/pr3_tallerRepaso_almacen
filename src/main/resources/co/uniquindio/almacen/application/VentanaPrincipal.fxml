@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,9 +14,18 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu fx:id="clientesBtn" mnemonicParsing="false" onAction="#abrirMenuClientes" text="CLIENTES" />
-        <Menu fx:id="productosBtn" mnemonicParsing="false" onAction="#abrirMenuProductos" text="PRODUCTOS" />
-        <Menu fx:id="transaccionesBtn" mnemonicParsing="false" onAction="#abrirMenuTransacciones" text="TRANSACCIONES" />
+        <Menu fx:id="clientesBtn" mnemonicParsing="false" text="CLIENTES">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#abrirMenuClientes" text="GESTION CLIENTES" />
+               </items></Menu>
+        <Menu fx:id="productosBtn" mnemonicParsing="false" text="PRODUCTOS">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#abrirMenuProductos" text="GESTION PRODUCTOS" />
+               </items></Menu>
+        <Menu fx:id="transaccionesBtn" mnemonicParsing="false" text="TRANSACCIONES">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#abrirMenuTransacciones" text="GESTION TRANSACCIONES" />
+               </items></Menu>
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">

@@ -82,8 +82,6 @@ public class Transaccion {
                 ", fecha='" + fecha + '\'' +
                 ", total=" + total +
                 ", iva=" + iva +
-                ", clienteTransaccion=" + clienteTransaccion +
-                ", listaDetalleTransaccion=" + listaDetalleTransaccion +
                 '}';
     }
 
@@ -119,5 +117,12 @@ public class Transaccion {
     public void modificarTotal(double subtotal) {
         setTotal(getTotal()+subtotal);
         setIva(getTotal()*0.19);
+    }
+
+    /**
+     * Metodo para devolver los productos de cada Detalle de Venta
+     */
+    public void devolverInventario() {
+        listaDetalleTransaccion.forEach(DetalleTransaccion::devolverInventario);
     }
 }

@@ -2,6 +2,7 @@ package co.uniquindio.almacen.model;
 
 import co.uniquindio.almacen.exceptions.ObjectException;
 
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -202,6 +203,20 @@ public class Almacen {
         return mensaje;
     }
 
+    /**
+     * Metodo para obtener la lista de clientes del Almacen
+     * @return
+     */
+    public List<Cliente> getListaClientes(){
+        List<Cliente> listaClientes = new ArrayList<Cliente>();
+        listaPersonas.forEach(p -> {
+            if(p instanceof Cliente){
+                listaClientes.add((Cliente) p);
+            }
+        });
+        return listaClientes;
+    }
+
     //CRUD Producto
     /**
      * Metodo para obtener un Producto en Almacen
@@ -255,7 +270,7 @@ public class Almacen {
             }
         }
         else{
-            throw new ObjectException("El cliente ya se encuentra registrado");
+            throw new ObjectException("El producto ya se encuentra registrado");
         }
         return mensaje;
     }
@@ -373,6 +388,8 @@ public class Almacen {
             transaccion.aniadirDetalleTransaccion(detalle);
             //Se modifica la informacion de la Transaccion
             transaccion.modificarTotal(subtotal);
+            //Se modifica la cantidad de inventario del producto
+            producto.setCantidadInventario(producto.getCantidadInventario()-cantidadProducto);
 
             mensaje = "El detalle de transaccion fue realizado exitosamente";
         }
@@ -402,4 +419,39 @@ public class Almacen {
 
         return "Transaccion realizada correctamente";
     }
+
+    /**
+     * Metodo para eliminar una Transaccion en Almacen
+     * Devuelve los produvtos de los Detalle de Transaccion que se realizaron en la Transaccion
+     * @param codigo
+     * @return
+     * @throws ObjectException
+     */
+    public String eliminarTransaccion(String codigo) throws ObjectException {
+        Transaccion t = obtenerTransaccion(codigo); if(t==null) throw new ObjectException("La transaccion no se encuentra registrada");
+        t.devolverInventario();
+        listaTransacciones.remove(t);
+        return "La transaccion fue eliminada exitosamente";
+    }
+
+    /**
+     * Metodo para devolver una lista con las identificaciones de los Cliente de Almacen
+     * @return
+     */
+    public List<String> devolverIdentificacionesClientes(){
+        List<String> listaIdentificaciones = new ArrayList<String>();
+        getListaClientes().forEach(c -> listaIdentificaciones.add(c.getIdentificacion()));
+        return listaIdentificaciones;
+    }
+
+    /**
+     * Metodo para devolver una lista con los codigos de los productos de Almacen
+     * @return
+     */
+    public List<String> devolverCodigosProductos(){
+        List<String> listaProductos = new ArrayList<String>();
+        getListaProductos().forEach(p -> listaProductos.add(p.getCodigo()));
+        return listaProductos;
+    }
+
 }
