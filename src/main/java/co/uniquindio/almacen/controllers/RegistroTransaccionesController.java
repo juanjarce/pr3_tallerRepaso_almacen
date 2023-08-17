@@ -97,6 +97,7 @@ public class RegistroTransaccionesController implements Initializable {
                     this.listaTransaccionData.add(t);
                     this.tableTransacciones.setItems(listaTransaccionData);
 
+                    inputCodigo.setText(null); comboCliente.getSelectionModel().clearSelection();
                     ocultarDatos();
                 }
 
@@ -115,6 +116,7 @@ public class RegistroTransaccionesController implements Initializable {
                 String mensaje = mfm.eliminarTransaccion(this.transaccionSeleccionada.getCodigo());
                 mostrarMensaje("Transaccion Eliminada", "Tarea Completada:", mensaje, Alert.AlertType.INFORMATION);
 
+                inputCodigo.setText(null); comboCliente.getSelectionModel().clearSelection();
                 ocultarDatos();
                 this.transaccionSeleccionada = null;
             } catch (ObjectException e) {
@@ -240,6 +242,7 @@ public class RegistroTransaccionesController implements Initializable {
 
     public void show() {
         stage.show();
+        tableTransacciones.refresh();
     }
 }
 

@@ -93,6 +93,7 @@ public class RegistroDetalleTransaccionController implements Initializable {
                     this.listaDetallesTransaccionData.add(dt);
                     this.tableDetallesTransaccion.setItems(listaDetallesTransaccionData);
 
+                    comboProducto.getSelectionModel().clearSelection(); inputCantidad.setText(null);
                     ocultarDatos();
                 }
 
