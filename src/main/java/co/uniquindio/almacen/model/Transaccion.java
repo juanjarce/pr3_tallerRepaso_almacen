@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Transaccion {
+public class Transaccion implements AdministradorDeTransacciones{
 
     //Atributos de la clase Transaccion
     public String codigo;
@@ -105,6 +105,8 @@ public class Transaccion {
      * Metodo para añadir un detalle de transaccion en la lista de detalles de una Transaccion
      * @param detalle
      */
+
+    @Override
     public void aniadirDetalleTransaccion(DetalleTransaccion detalle) {
         listaDetalleTransaccion.add(detalle);
     }
@@ -122,6 +124,7 @@ public class Transaccion {
     /**
      * Metodo para devolver los productos de cada Detalle de Venta
      */
+    @Override
     public void devolverInventario() {
         listaDetalleTransaccion.forEach(DetalleTransaccion::devolverInventario);
     }

@@ -82,6 +82,7 @@ public abstract class Cliente  extends Persona{
      * @param transaccion
      */
     public void aniadirTransaccion(Transaccion transaccion) {
+
         listaTransacciones.add(transaccion);
     }
 }

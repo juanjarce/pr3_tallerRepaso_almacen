@@ -114,7 +114,7 @@ public abstract class Producto {
     }
 
     //-----------------------------------------------------------------------------------------------------------------------------
-    //Metodos de la clase Produxto
+    //Metodos de la clase Producto
 
     /**
      * Metodo que verifica si hay la cantidad requerida de un producto en el invetario
