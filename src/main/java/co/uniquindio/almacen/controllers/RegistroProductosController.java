@@ -216,14 +216,24 @@ public class RegistroProductosController implements Initializable {
 
     @FXML
     void getFechaEnvasado(ActionEvent event) {
-        LocalDate myDate = dateFechaEnvasado.getValue();
-        fechaEnvasado = myDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        try{
+            LocalDate myDate = dateFechaEnvasado.getValue();
+            fechaEnvasado = myDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        }
+        catch (Exception ignored){
+
+        }
     }
 
     @FXML
     void getFechaVencimiento(ActionEvent event) {
-        LocalDate myDate = dateFechaVencimiento.getValue();
-        fechaVencimiento = myDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        try{
+            LocalDate myDate = dateFechaVencimiento.getValue();
+            fechaVencimiento = myDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        }
+        catch(Exception ignored){
+
+        }
     }
 
     @FXML
@@ -274,12 +284,13 @@ public class RegistroProductosController implements Initializable {
             comboTipoProducto.getSelectionModel().select(this.productoSeleccionado.getTipoProducto().toString());
             if(this.productoSeleccionado.getTipoProducto().equals(TipoProducto.ENVASADO)){
                 ProductoEnvasado pe = (ProductoEnvasado) this.productoSeleccionado;
-                dateFechaEnvasado.setDisable(false);
+                dateFechaEnvasado.setDisable(false); dateFechaEnvasado.setValue(LocalDate.parse(pe.getFechaEnvasado(), DateTimeFormatter.ofPattern("dd.MM.yyyy"))); this.fechaEnvasado = pe.getFechaEnvasado();
                 inputPeso.setDisable(false); inputPeso.setText(Double.toString(pe.getPesoEnvase()));
                 comboTipoProducto.setDisable(false); comboPais.getSelectionModel().select(pe.getPaisOrigen());
             }
             if(this.productoSeleccionado.getTipoProducto().equals(TipoProducto.PERECEDERO)){
-                dateFechaVencimiento.setDisable(false);
+                ProductoPerecedero pp = (ProductoPerecedero) this.productoSeleccionado;
+                dateFechaVencimiento.setDisable(false); dateFechaVencimiento.setValue(LocalDate.parse(pp.getFechaVencimiento(), DateTimeFormatter.ofPattern("dd.MM.yyyy"))); this.fechaVencimiento=pp.getFechaVencimiento();
             }
             if(this.productoSeleccionado.getTipoProducto().equals(TipoProducto.REFRIGERADO)){
                 ProductoRefrigerado pr = (ProductoRefrigerado) this.productoSeleccionado;
@@ -333,10 +344,10 @@ public class RegistroProductosController implements Initializable {
     }
 
     public void deshabilitarDatosTipoProducto(){
-        dateFechaVencimiento.setDisable(true);
+        dateFechaVencimiento.setDisable(true); dateFechaVencimiento.setValue(null); this.fechaVencimiento=null;
         inputCodigoAprobacion.setDisable(true); inputCodigoAprobacion.setText(null);
         inputTemperatura.setDisable(true); inputTemperatura.setText("°C");
-        dateFechaEnvasado.setDisable(true);
+        dateFechaEnvasado.setDisable(true); dateFechaEnvasado.setValue(null); this.fechaEnvasado=null;
         inputPeso.setDisable(true); inputPeso.setText(null);
         comboPais.setDisable(true); comboPais.getSelectionModel().clearSelection();
     }

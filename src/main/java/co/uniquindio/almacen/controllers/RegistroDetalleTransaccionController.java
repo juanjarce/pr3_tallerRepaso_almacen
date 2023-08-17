@@ -140,6 +140,7 @@ public class RegistroDetalleTransaccionController implements Initializable {
         this.stage = stage;
         this.registroTransaccionesController = registroTransaccionesController;
         this.transaccion = transaccion;
+        inputCodigoTransaccion.setText(transaccion.getCodigo());
 
         listaDetallesTransaccionData.addAll(transaccion.getListaDetalleTransaccion());
         tableDetallesTransaccion.setItems(listaDetallesTransaccionData);

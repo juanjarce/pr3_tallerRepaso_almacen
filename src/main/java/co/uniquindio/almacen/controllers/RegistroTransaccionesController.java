@@ -97,8 +97,7 @@ public class RegistroTransaccionesController implements Initializable {
                     this.listaTransaccionData.add(t);
                     this.tableTransacciones.setItems(listaTransaccionData);
 
-                    inputCodigo.setText(null); comboCliente.getSelectionModel().clearSelection();
-                    deshabilitarDatos();
+                    limpiarDatos();
                 }
 
             } catch (ObjectException e) {
@@ -116,8 +115,7 @@ public class RegistroTransaccionesController implements Initializable {
                 String mensaje = mfm.eliminarTransaccion(this.transaccionSeleccionada.getCodigo());
                 mostrarMensaje("Transaccion Eliminada", "Tarea Completada:", mensaje, Alert.AlertType.INFORMATION);
 
-                inputCodigo.setText(null); comboCliente.getSelectionModel().clearSelection();
-                deshabilitarDatos();
+                limpiarDatos();
                 this.transaccionSeleccionada = null;
             } catch (ObjectException e) {
                 mostrarMensaje("Error:", "Eliminación Transaccion:", e.getMessage(), Alert.AlertType.WARNING);
@@ -149,8 +147,13 @@ public class RegistroTransaccionesController implements Initializable {
 
     @FXML
     void getFechaEvent(ActionEvent event) {
-        LocalDate myDate = dateFecha.getValue();
-        fechaTransaccion = myDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        try{
+            LocalDate myDate = dateFecha.getValue();
+            fechaTransaccion = myDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        }
+        catch(Exception ignored){
+
+        }
     }
 
     @FXML
@@ -165,6 +168,7 @@ public class RegistroTransaccionesController implements Initializable {
         if(this.transaccionSeleccionada!=null) {
             inputCodigo.setText(this.transaccionSeleccionada.getCodigo());
             comboCliente.getSelectionModel().select(this.transaccionSeleccionada.getClienteTransaccion().getIdentificacion());
+            dateFecha.setValue(LocalDate.parse(this.transaccionSeleccionada.getFecha(), DateTimeFormatter.ofPattern("dd.MM.yyyy"))); this.fechaTransaccion=this.transaccionSeleccionada.getFecha();
             inputTotal.setDisable(false); inputTotal.setText("$"+" "+this.transaccionSeleccionada.getTotal());
             inputIVA.setDisable(false); inputIVA.setText("$"+" "+this.transaccionSeleccionada.getIva());
         }
@@ -179,6 +183,7 @@ public class RegistroTransaccionesController implements Initializable {
     public void limpiarDatos(){
         inputCodigo.setText(null);
         comboCliente.getSelectionModel().clearSelection();
+        dateFecha.setValue(null); this.fechaTransaccion = null;
         deshabilitarDatos();
     }
     public void deshabilitarDatos(){

@@ -200,8 +200,12 @@ public class RegistroClientesController implements Initializable {
 
     @FXML
     void getFechaNacimiento(ActionEvent event) {
-        LocalDate myDate = dateFechaNacimiento.getValue();
-        fechaNacimiento = myDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        try{
+            LocalDate myDate = dateFechaNacimiento.getValue();
+            fechaNacimiento = myDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        }catch(Exception ignored){
+
+        }
     }
 
     @FXML
@@ -246,12 +250,12 @@ public class RegistroClientesController implements Initializable {
             comboTipoCliente.getSelectionModel().select(this.clienteSeleccionado.getTipoCliente().toString());
             if(this.clienteSeleccionado.getTipoCliente().equals(TipoCliente.NATURAL)){
                 ClienteNatural cn = (ClienteNatural) this.clienteSeleccionado;
-                labelEmail.setVisible(true); inputEmail.setVisible(true); inputEmail.setText(cn.getEmail());
-                labelFechaNacimiento.setVisible(true); dateFechaNacimiento.setVisible(true);
+                inputEmail.setDisable(false); inputEmail.setText(cn.getEmail());
+                dateFechaNacimiento.setDisable(false); dateFechaNacimiento.setValue(LocalDate.parse(cn.getFechaNacimiento(), DateTimeFormatter.ofPattern("dd.MM.yyyy"))); this.fechaNacimiento=cn.getFechaNacimiento();
             }
             if(this.clienteSeleccionado.getTipoCliente().equals(TipoCliente.JURIDICO)){
                 ClienteJuridico cj = (ClienteJuridico) this.clienteSeleccionado;
-                labelNit.setVisible(true); inputNit.setVisible(true); inputNit.setText(cj.getNit());
+                inputNit.setDisable(false); inputNit.setText(cj.getNit());
             }
         }
     }
@@ -298,7 +302,7 @@ public class RegistroClientesController implements Initializable {
 
     public void deshabilitarDatosTipoCliente(){
         inputEmail.setDisable(true); inputEmail.setText(null);
-        dateFechaNacimiento.setDisable(true);
+        dateFechaNacimiento.setDisable(true); dateFechaNacimiento.setValue(null); this.fechaNacimiento=null;
         inputNit.setDisable(true); inputNit.setText(null);
     }
 
