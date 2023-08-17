@@ -94,7 +94,7 @@ public class RegistroDetalleTransaccionController implements Initializable {
                     this.tableDetallesTransaccion.setItems(listaDetallesTransaccionData);
 
                     comboProducto.getSelectionModel().clearSelection(); inputCantidad.setText(null);
-                    ocultarDatos();
+                    deshabilitarDatos();
                 }
 
             } catch (ObjectException e) {
@@ -107,7 +107,7 @@ public class RegistroDetalleTransaccionController implements Initializable {
     void nuevoDetalleTransaccionEvent(ActionEvent event) {
         comboProducto.getSelectionModel().clearSelection();
         inputCantidad.setText(null);
-        ocultarDatos();
+        deshabilitarDatos();
     }
 
     @FXML
@@ -117,8 +117,8 @@ public class RegistroDetalleTransaccionController implements Initializable {
         if(this.detalleTransaccionSeleccionado!=null) {
             comboProducto.getSelectionModel().select(this.detalleTransaccionSeleccionado.getProducto().getCodigo());
             inputCantidad.setText(Integer.toString(this.detalleTransaccionSeleccionado.getCantidadProducto()));
-            labelTransaccion.setVisible(true); inputCodigoTransaccion.setVisible(true); inputCodigoTransaccion.setText(this.transaccion.getCodigo());
-            labelSubtotal.setVisible(true); inputSubtotal.setVisible(true); inputSubtotal.setText("$"+" "+this.detalleTransaccionSeleccionado.getSubtotal());
+            inputCodigoTransaccion.setDisable(false); inputCodigoTransaccion.setText(this.transaccion.getCodigo());
+            inputSubtotal.setDisable(false); inputSubtotal.setText("$"+" "+this.detalleTransaccionSeleccionado.getSubtotal());
         }
     }
 
@@ -159,7 +159,7 @@ public class RegistroDetalleTransaccionController implements Initializable {
         listaProductos.addAll(mfm.obtenerCodigosProductos());
         comboProducto.setItems(listaProductos);
 
-        ocultarDatos();
+        deshabilitarDatos();
 
     }
 
@@ -180,9 +180,9 @@ public class RegistroDetalleTransaccionController implements Initializable {
         }
     }
 
-    public void ocultarDatos(){
-        labelTransaccion.setVisible(false); inputCodigoTransaccion.setVisible(false); inputCodigoTransaccion.setText(null);
-        labelSubtotal.setVisible(false); inputSubtotal.setVisible(false); inputSubtotal.setText(null);
+    public void deshabilitarDatos(){
+        inputCodigoTransaccion.setDisable(true); inputCodigoTransaccion.setText(null);
+        inputSubtotal.setDisable(true); inputSubtotal.setText(null);
     }
 }
 

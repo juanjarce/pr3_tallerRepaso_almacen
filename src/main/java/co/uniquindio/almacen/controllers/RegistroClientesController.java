@@ -121,7 +121,7 @@ public class RegistroClientesController implements Initializable {
 
                     inputNombres.setText(null); inputApellidos.setText(null); inputIdentificacion.setText(null);
                     inputDireccion.setText(null); inputTelefono.setText(null); comboTipoCliente.getSelectionModel().clearSelection();
-                    ocultarDatosTipoCliente();
+                    deshabilitarDatosTipoCliente();
 
                     this.clienteSeleccionado = null;
                 } catch (ObjectException e) {
@@ -154,7 +154,7 @@ public class RegistroClientesController implements Initializable {
 
                     inputNombres.setText(null); inputApellidos.setText(null); inputIdentificacion.setText(null);
                     inputDireccion.setText(null); inputTelefono.setText(null); comboTipoCliente.getSelectionModel().clearSelection();
-                    ocultarDatosTipoCliente();
+                    deshabilitarDatosTipoCliente();
                 }
 
             } catch (ObjectException e) {
@@ -186,7 +186,7 @@ public class RegistroClientesController implements Initializable {
 
                 inputNombres.setText(null); inputApellidos.setText(null); inputIdentificacion.setText(null);
                 inputDireccion.setText(null); inputTelefono.setText(null); comboTipoCliente.getSelectionModel().clearSelection();
-                ocultarDatosTipoCliente();
+                deshabilitarDatosTipoCliente();
 
                 this.clienteSeleccionado = null;
             } catch (ObjectException e) {
@@ -212,20 +212,20 @@ public class RegistroClientesController implements Initializable {
         inputDireccion.setText(null);
         inputTelefono.setText(null);
         comboTipoCliente.getSelectionModel().clearSelection();
-        ocultarDatosTipoCliente();
+        deshabilitarDatosTipoCliente();
     }
 
     @FXML
     void refrescarAtributosTipoCliente(ActionEvent event) {
         try {
             if(comboTipoCliente.getSelectionModel().getSelectedItem().equals("NATURAL")){
-                ocultarDatosTipoCliente();
-                labelEmail.setVisible(true); inputEmail.setVisible(true);
-                labelFechaNacimiento.setVisible(true); dateFechaNacimiento.setVisible(true);
+                deshabilitarDatosTipoCliente();
+                inputEmail.setDisable(false);
+                dateFechaNacimiento.setDisable(false);
             }
             if(comboTipoCliente.getSelectionModel().getSelectedItem().equals("JURIDICO")){
-                ocultarDatosTipoCliente();
-                labelNit.setVisible(true); inputNit.setVisible(true);
+                deshabilitarDatosTipoCliente();
+                inputNit.setDisable(false);
             }
         }
         catch(Exception ignored) {
@@ -292,14 +292,14 @@ public class RegistroClientesController implements Initializable {
         ObservableList<String> tipoClientes = FXCollections.observableArrayList("NATURAL", "JURIDICO");
         comboTipoCliente.setItems(tipoClientes);
 
-        ocultarDatosTipoCliente();
+        deshabilitarDatosTipoCliente();
 
     }
 
-    public void ocultarDatosTipoCliente(){
-        labelEmail.setVisible(false); inputEmail.setVisible(false); inputEmail.setText(null);
-        labelFechaNacimiento.setVisible(false); dateFechaNacimiento.setVisible(false);
-        labelNit.setVisible(false); inputNit.setVisible(false); inputNit.setText(null);
+    public void deshabilitarDatosTipoCliente(){
+        inputEmail.setDisable(true); inputEmail.setText(null);
+        dateFechaNacimiento.setDisable(true);
+        inputNit.setDisable(true); inputNit.setText(null);
     }
 
     private boolean validarDatos(String nombre, String apellido, String identificacion, String direccion, String telefono, TipoCliente tipoCliente, String email, String fechaNacimiento, String nit) {

@@ -142,7 +142,7 @@ public class RegistroProductosController implements Initializable {
 
                     inputNombre.setText(null); inputCodigo.setText(null); inputDescripcion.setText(null);
                     inputValorUnitario.setText(null); inputCantidadInventario.setText(null); comboTipoProducto.getSelectionModel().clearSelection();
-                    ocultarDatosTipoProducto();
+                    deshabilitarDatosTipoProducto();
 
                     this.productoSeleccionado = null;
                 } catch (ObjectException e) {
@@ -182,7 +182,7 @@ public class RegistroProductosController implements Initializable {
 
                     inputNombre.setText(null); inputCodigo.setText(null); inputDescripcion.setText(null);
                     inputValorUnitario.setText(null); inputCantidadInventario.setText(null); comboTipoProducto.getSelectionModel().clearSelection();
-                    ocultarDatosTipoProducto();
+                    deshabilitarDatosTipoProducto();
                 }
 
             } catch (ObjectException e) {
@@ -202,7 +202,7 @@ public class RegistroProductosController implements Initializable {
 
                 inputNombre.setText(null); inputCodigo.setText(null); inputDescripcion.setText(null);
                 inputValorUnitario.setText(null); inputCantidadInventario.setText(null); comboTipoProducto.getSelectionModel().clearSelection();
-                ocultarDatosTipoProducto();
+                deshabilitarDatosTipoProducto();
 
                 this.productoSeleccionado = null;
             } catch (ObjectException e) {
@@ -234,26 +234,26 @@ public class RegistroProductosController implements Initializable {
         inputValorUnitario.setText(null);
         inputCantidadInventario.setText(null);
         comboTipoProducto.getSelectionModel().clearSelection();
-        ocultarDatosTipoProducto();
+        deshabilitarDatosTipoProducto();
     }
 
     @FXML
     void refrescarAtributosTipoProducto(ActionEvent event) {
         try {
             if(comboTipoProducto.getSelectionModel().getSelectedItem().equals("PERECEDERO")){
-                ocultarDatosTipoProducto();
-                labelFechaVencimiento.setVisible(true); dateFechaVencimiento.setVisible(true);
+                deshabilitarDatosTipoProducto();
+                dateFechaVencimiento.setDisable(false);
             }
             if(comboTipoProducto.getSelectionModel().getSelectedItem().equals("REFRIGERADO")){
-                ocultarDatosTipoProducto();
-                labelCodigoAprobacion.setVisible(true); inputCodigoAprobacion.setVisible(true);
-                labelTemperatura.setVisible(true); inputTemperatura.setVisible(true);
+                deshabilitarDatosTipoProducto();
+                inputCodigoAprobacion.setDisable(false);
+                inputTemperatura.setDisable(false);
             }
             if(comboTipoProducto.getSelectionModel().getSelectedItem().equals("ENVASADO")){
-                ocultarDatosTipoProducto();
-                labelFechaEnvasado.setVisible(true); dateFechaEnvasado.setVisible(true);
-                labelPeso.setVisible(true); inputPeso.setVisible(true);
-                labelPais.setVisible(true); comboPais.setVisible(true);
+                deshabilitarDatosTipoProducto();
+                dateFechaEnvasado.setDisable(false);
+                inputPeso.setDisable(false);
+                comboPais.setDisable(false);
             }
         }
         catch(Exception ignored) {
@@ -274,17 +274,17 @@ public class RegistroProductosController implements Initializable {
             comboTipoProducto.getSelectionModel().select(this.productoSeleccionado.getTipoProducto().toString());
             if(this.productoSeleccionado.getTipoProducto().equals(TipoProducto.ENVASADO)){
                 ProductoEnvasado pe = (ProductoEnvasado) this.productoSeleccionado;
-                labelFechaEnvasado.setVisible(true); dateFechaEnvasado.setVisible(true);
-                labelPeso.setVisible(true); inputPeso.setVisible(true); inputPeso.setText(Double.toString(pe.getPesoEnvase()));
-                labelPais.setVisible(true); comboTipoProducto.setVisible(true); comboPais.getSelectionModel().select(pe.getPaisOrigen());
+                dateFechaEnvasado.setDisable(false);
+                inputPeso.setDisable(false); inputPeso.setText(Double.toString(pe.getPesoEnvase()));
+                comboTipoProducto.setDisable(false); comboPais.getSelectionModel().select(pe.getPaisOrigen());
             }
             if(this.productoSeleccionado.getTipoProducto().equals(TipoProducto.PERECEDERO)){
-                labelFechaVencimiento.setVisible(true); dateFechaVencimiento.setVisible(true);
+                dateFechaVencimiento.setDisable(false);
             }
             if(this.productoSeleccionado.getTipoProducto().equals(TipoProducto.REFRIGERADO)){
                 ProductoRefrigerado pr = (ProductoRefrigerado) this.productoSeleccionado;
-                labelCodigoAprobacion.setVisible(true); inputCodigoAprobacion.setVisible(true); inputCodigoAprobacion.setText(((ProductoRefrigerado) this.productoSeleccionado).getCodigoAprobacion());
-                labelTemperatura.setVisible(true); inputTemperatura.setVisible(true); inputTemperatura.setText(((ProductoRefrigerado) this.productoSeleccionado).getTemperaturaRecomendada());
+                inputCodigoAprobacion.setDisable(false); inputCodigoAprobacion.setText(((ProductoRefrigerado) this.productoSeleccionado).getCodigoAprobacion());
+                inputTemperatura.setDisable(false); inputTemperatura.setText(((ProductoRefrigerado) this.productoSeleccionado).getTemperaturaRecomendada());
             }
         }
     }
@@ -328,17 +328,17 @@ public class RegistroProductosController implements Initializable {
         ObservableList<String> paisesOrigen = FXCollections.observableArrayList("COLOMBIA", "ARGENTINA", "CHILE", "ECUADOR", "PERU");
         comboPais.setItems(paisesOrigen);
 
-        ocultarDatosTipoProducto();
+        deshabilitarDatosTipoProducto();
 
     }
 
-    public void ocultarDatosTipoProducto(){
-        labelFechaVencimiento.setVisible(false); dateFechaVencimiento.setVisible(false);
-        labelCodigoAprobacion.setVisible(false); inputCodigoAprobacion.setVisible(false); inputCodigoAprobacion.setText(null);
-        labelTemperatura.setVisible(false); inputTemperatura.setVisible(false); inputTemperatura.setText("°C");
-        labelFechaEnvasado.setVisible(false); dateFechaEnvasado.setVisible(false);
-        labelPeso.setVisible(false); inputPeso.setVisible(false); inputPeso.setText(null);
-        labelPais.setVisible(false); comboPais.setVisible(false); comboPais.getSelectionModel().clearSelection();
+    public void deshabilitarDatosTipoProducto(){
+        dateFechaVencimiento.setDisable(true);
+        inputCodigoAprobacion.setDisable(true); inputCodigoAprobacion.setText(null);
+        inputTemperatura.setDisable(true); inputTemperatura.setText("°C");
+        dateFechaEnvasado.setDisable(true);
+        inputPeso.setDisable(true); inputPeso.setText(null);
+        comboPais.setDisable(true); comboPais.getSelectionModel().clearSelection();
     }
 
     private boolean validarDatos(String codigo, String nombre, String descripcion, String valorUnitario, String cantidadInventario, String tipoProducto, String fechaEnvasado, String pesoEnvase, String paisOrigen,

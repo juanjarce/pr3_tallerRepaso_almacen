@@ -98,7 +98,7 @@ public class RegistroTransaccionesController implements Initializable {
                     this.tableTransacciones.setItems(listaTransaccionData);
 
                     inputCodigo.setText(null); comboCliente.getSelectionModel().clearSelection();
-                    ocultarDatos();
+                    deshabilitarDatos();
                 }
 
             } catch (ObjectException e) {
@@ -117,7 +117,7 @@ public class RegistroTransaccionesController implements Initializable {
                 mostrarMensaje("Transaccion Eliminada", "Tarea Completada:", mensaje, Alert.AlertType.INFORMATION);
 
                 inputCodigo.setText(null); comboCliente.getSelectionModel().clearSelection();
-                ocultarDatos();
+                deshabilitarDatos();
                 this.transaccionSeleccionada = null;
             } catch (ObjectException e) {
                 mostrarMensaje("Error:", "Eliminación Transaccion:", e.getMessage(), Alert.AlertType.WARNING);
@@ -165,8 +165,8 @@ public class RegistroTransaccionesController implements Initializable {
         if(this.transaccionSeleccionada!=null) {
             inputCodigo.setText(this.transaccionSeleccionada.getCodigo());
             comboCliente.getSelectionModel().select(this.transaccionSeleccionada.getClienteTransaccion().getIdentificacion());
-            labelTotal.setVisible(true); inputTotal.setVisible(true); inputTotal.setText("$"+" "+this.transaccionSeleccionada.getTotal());
-            labelIVA.setVisible(true); inputIVA.setVisible(true); inputIVA.setText("$"+" "+this.transaccionSeleccionada.getIva());
+            inputTotal.setDisable(false); inputTotal.setText("$"+" "+this.transaccionSeleccionada.getTotal());
+            inputIVA.setDisable(false); inputIVA.setText("$"+" "+this.transaccionSeleccionada.getIva());
         }
     }
 
@@ -179,11 +179,11 @@ public class RegistroTransaccionesController implements Initializable {
     public void limpiarDatos(){
         inputCodigo.setText(null);
         comboCliente.getSelectionModel().clearSelection();
-        ocultarDatos();
+        deshabilitarDatos();
     }
-    public void ocultarDatos(){
-        labelTotal.setVisible(false); inputTotal.setVisible(false); inputTotal.setText(null);
-        labelIVA.setVisible(false); inputIVA.setVisible(false); inputIVA.setText(null);
+    public void deshabilitarDatos(){
+        inputTotal.setDisable(true); inputTotal.setText(null);
+        inputIVA.setDisable(true); inputIVA.setText(null);
     }
 
     public void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
@@ -216,7 +216,7 @@ public class RegistroTransaccionesController implements Initializable {
         listaClientes.addAll(mfm.obtenerIdentificacionesClientes());
         comboCliente.setItems(listaClientes);
 
-        ocultarDatos();
+        deshabilitarDatos();
 
     }
 
