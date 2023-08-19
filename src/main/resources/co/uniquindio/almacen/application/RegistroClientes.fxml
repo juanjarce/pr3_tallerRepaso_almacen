@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="693.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.almacen.controllers.RegistroClientesController">
    <children>
-      <Label layoutX="361.0" layoutY="14.0" text="Gestion de Clientes">
+      <Label layoutX="361.0" layoutY="14.0" text="Gestión de Clientes">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -24,7 +24,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="333.0" prefWidth="669.0">
                <children>
-                  <Label layoutX="9.0" layoutY="8.0" text="Informacion del Cliente">
+                  <Label layoutX="9.0" layoutY="8.0" text="Información del cliente">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -32,15 +32,16 @@
                   <Separator layoutX="14.0" layoutY="32.0" prefHeight="5.0" prefWidth="751.0" />
                   <Label layoutX="9.0" layoutY="46.0" text="Nombres :" />
                   <Label layoutX="9.0" layoutY="80.0" text="Apellidos :" />
-                  <Label layoutX="9.0" layoutY="114.0" text="Identificacion:" />
+                  <Label layoutX="9.0" layoutY="114.0" text="Identificación:" />
                   <TextField fx:id="inputNombres" layoutX="88.0" layoutY="42.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese los nombres del cliente" />
                   <TextField fx:id="inputApellidos" layoutX="88.0" layoutY="76.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese los apellidos del cliente" />
-                  <TextField fx:id="inputIdentificacion" layoutX="88.0" layoutY="110.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese la identificacion del cliente" />
+                  <TextField fx:id="inputIdentificacion" layoutX="88.0" layoutY="110.0" prefHeight="25.0"
+                             prefWidth="257.0" promptText="Ingrese la identificación del cliente" />
                   <Separator layoutX="14.0" layoutY="214.0" prefHeight="5.0" prefWidth="751.0" />
                   <Button fx:id="btnNuevo" layoutX="224.0" layoutY="233.0" mnemonicParsing="false" onAction="#nuevoClienteEvent" prefHeight="25.0" prefWidth="109.0" text="NUEVO" />
                   <Button fx:id="btnAgregar" layoutX="470.0" layoutY="233.0" mnemonicParsing="false" onAction="#agregarClienteEvent" prefHeight="25.0" prefWidth="133.0" text="AGREGAR" />
                   <Button fx:id="btnActualizar" layoutX="345.0" layoutY="233.0" mnemonicParsing="false" onAction="#actualizarClienteEvent" prefHeight="25.0" prefWidth="116.0" text="ACTUALIZAR" />
-                  <Label layoutX="431.0" layoutY="46.0" text="Direccion:" />
+                  <Label layoutX="431.0" layoutY="46.0" text="Dirección:" />
                   <Label layoutX="432.0" layoutY="80.0" text="Telefono:" />
                   <Label layoutX="432.0" layoutY="114.0" text="Tipo Cliente:" />
                   <TextField fx:id="inputDireccion" layoutX="508.0" layoutY="42.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el usuario del cliente" />
@@ -67,9 +68,9 @@
                     <columns>
                       <TableColumn fx:id="columnNombres" prefWidth="88.0" text="Nombres" />
                         <TableColumn fx:id="columnApellidos" prefWidth="93.0" text="Apellidos" />
-                      <TableColumn fx:id="columnIdentificacion" prefWidth="145.0" text="Identificacion" />
-                        <TableColumn fx:id="columnDireccion" prefWidth="182.0" text="Direccion" />
-                        <TableColumn fx:id="columnTelefono" minWidth="5.0" prefWidth="105.0" text="Telefono" />
+                      <TableColumn fx:id="columnIdentificacion" prefWidth="145.0" text="Identificación" />
+                        <TableColumn fx:id="columnDireccion" prefWidth="182.0" text="Dirección" />
+                        <TableColumn fx:id="columnTelefono" minWidth="5.0" prefWidth="105.0" text="Teléfono" />
                         <TableColumn fx:id="columnTipoCliente" prefWidth="147.0" text="TipoCliente" />
                     </columns>
                   </TableView>

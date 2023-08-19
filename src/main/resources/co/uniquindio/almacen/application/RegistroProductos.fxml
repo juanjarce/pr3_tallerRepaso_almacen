@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="679.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.almacen.controllers.RegistroProductosController">
    <children>
-      <Label layoutX="385.0" layoutY="14.0" text="Gestion de Productos">
+      <Label layoutX="385.0" layoutY="14.0" text="Gestión de Productos">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -25,23 +25,24 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="333.0" prefWidth="669.0">
                <children>
-                  <Label layoutX="9.0" layoutY="8.0" text="Informacion del Producto">
+                  <Label layoutX="9.0" layoutY="8.0" text="Información del Producto">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
                   <Separator layoutX="14.0" layoutY="32.0" prefHeight="5.0" prefWidth="751.0" />
                   <Label layoutX="9.0" layoutY="46.0" text="Nombre:" />
-                  <Label layoutX="9.0" layoutY="80.0" text="Codigo:" />
+                  <Label layoutX="9.0" layoutY="80.0" text="Código:" />
                   <Label layoutX="9.0" layoutY="114.0" text="Valor Unitario:" />
                   <TextField fx:id="inputNombre" layoutX="130.0" layoutY="42.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el nombre del producto:" />
-                  <TextField fx:id="inputCodigo" layoutX="130.0" layoutY="76.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el codigo del producto" />
+                  <TextField fx:id="inputCodigo" layoutX="130.0" layoutY="76.0" prefHeight="25.0" prefWidth="257.0"
+                             promptText="Ingrese el código del producto" />
                   <TextField fx:id="inputValorUnitario" layoutX="130.0" layoutY="110.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el valor unitario del producto" />
                   <Separator layoutX="14.0" layoutY="265.0" prefHeight="5.0" prefWidth="751.0" />
                   <Button fx:id="btnNuevo" layoutX="221.0" layoutY="278.0" mnemonicParsing="false" onAction="#nuevoProductoEvent" prefHeight="25.0" prefWidth="109.0" text="NUEVO" />
                   <Button fx:id="btnAgregar" layoutX="462.0" layoutY="278.0" mnemonicParsing="false" onAction="#agregarProductoEvent" prefHeight="25.0" prefWidth="133.0" text="AGREGAR" />
                   <Button fx:id="btnActualizar" layoutX="338.0" layoutY="278.0" mnemonicParsing="false" onAction="#actualizarProductoEvent" prefHeight="25.0" prefWidth="116.0" text="ACTUALIZAR" />
-                  <Label layoutX="429.0" layoutY="46.0" text="Descripcion:" />
+                  <Label layoutX="429.0" layoutY="46.0" text="Descripción:" />
                   <Label layoutX="428.0" layoutY="114.0" text="Tipo Producto:" />
                   <ComboBox fx:id="comboTipoProducto" layoutX="511.0" layoutY="110.0" onAction="#refrescarAtributosTipoProducto" prefHeight="25.0" prefWidth="257.0" />
                   <Label layoutX="9.0" layoutY="146.0" text="Cantidad Inventario:" />
@@ -49,9 +50,10 @@
                   <TextArea fx:id="inputDescripcion" layoutX="503.0" layoutY="42.0" prefHeight="61.0" prefWidth="263.0" />
                   <Label fx:id="labelFechaVencimiento" layoutX="429.0" layoutY="146.0" text="Fecha Vencimiento:" />
                   <DatePicker fx:id="dateFechaVencimiento" layoutX="535.0" layoutY="142.0" onAction="#getFechaVencimiento" prefHeight="25.0" prefWidth="233.0" />
-                  <Label fx:id="labelCodigoAprobacion" layoutX="9.0" layoutY="181.0" text="Codigo Aprobación:" />
+                  <Label fx:id="labelCodigoAprobacion" layoutX="9.0" layoutY="181.0" text="Código Aprobación:" />
                   <Label fx:id="labelTemperatura" layoutX="9.0" layoutY="211.0" text="Temperatura Recomendada" />
-                  <TextField fx:id="inputCodigoAprobacion" layoutX="130.0" layoutY="177.0" prefHeight="25.0" prefWidth="257.0" promptText="Codigo de aprobacion del producto" />
+                  <TextField fx:id="inputCodigoAprobacion" layoutX="130.0" layoutY="177.0" prefHeight="25.0"
+                             prefWidth="257.0" promptText="Código de aprobación del producto" />
                   <TextField fx:id="inputTemperatura" layoutX="166.0" layoutY="207.0" prefHeight="25.0" prefWidth="220.0" text="°C" />
                   <Label fx:id="labelFechaEnvasado" layoutX="428.0" layoutY="181.0" text="Fecha Envasado:" />
                   <Label fx:id="labelPeso" layoutX="428.0" layoutY="211.0" text="Peso Envase:" />
@@ -72,11 +74,11 @@
                   <TableView fx:id="tableProducto" layoutX="14.0" layoutY="41.0" onMouseClicked="#seleccionarProductoEvent" prefHeight="180.0" prefWidth="761.0">
                     <columns>
                       <TableColumn fx:id="columnNombre" prefWidth="88.0" text="Nombre" />
-                        <TableColumn fx:id="columnCodigo" prefWidth="93.0" text="Codigo" />
+                        <TableColumn fx:id="columnCodigo" prefWidth="93.0" text="Código" />
                       <TableColumn fx:id="columnValor" prefWidth="112.0" text="Valor Unitario" />
                         <TableColumn fx:id="columnInventario" prefWidth="146.0" text="Cantidad Inventario" />
                         <TableColumn fx:id="columnTipoProducto" minWidth="5.0" prefWidth="115.0" text="Tipo Producto" />
-                        <TableColumn fx:id="columnDescripcion" prefWidth="206.0" text="Descripcion" />
+                        <TableColumn fx:id="columnDescripcion" prefWidth="206.0" text="Descripción" />
                     </columns>
                   </TableView>
                   <Button fx:id="btnEliminar" layoutX="674.0" layoutY="230.0" mnemonicParsing="false" onAction="#eliminarProductoEvent" prefHeight="25.0" prefWidth="101.0" text="Eliminar" />

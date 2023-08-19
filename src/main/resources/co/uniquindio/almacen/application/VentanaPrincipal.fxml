@@ -16,15 +16,15 @@
       <menus>
         <Menu fx:id="clientesBtn" mnemonicParsing="false" text="CLIENTES">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#abrirMenuClientes" text="GESTION CLIENTES" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirMenuClientes" text="GESTIÓN CLIENTES" />
                </items></Menu>
         <Menu fx:id="productosBtn" mnemonicParsing="false" text="PRODUCTOS">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#abrirMenuProductos" text="GESTION PRODUCTOS" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirMenuProductos" text="GESTIÓN PRODUCTOS" />
                </items></Menu>
         <Menu fx:id="transaccionesBtn" mnemonicParsing="false" text="TRANSACCIONES">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#abrirMenuTransacciones" text="GESTION TRANSACCIONES" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirMenuTransacciones" text="GESTIÓN TRANSACCIONES" />
                </items></Menu>
       </menus>
     </MenuBar>
