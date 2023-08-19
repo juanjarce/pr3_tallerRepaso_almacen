@@ -35,8 +35,7 @@
                   <Label layoutX="9.0" layoutY="80.0" text="Código:" />
                   <Label layoutX="9.0" layoutY="114.0" text="Valor Unitario:" />
                   <TextField fx:id="inputNombre" layoutX="130.0" layoutY="42.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el nombre del producto:" />
-                  <TextField fx:id="inputCodigo" layoutX="130.0" layoutY="76.0" prefHeight="25.0" prefWidth="257.0"
-                             promptText="Ingrese el código del producto" />
+                  <TextField fx:id="inputCodigo" layoutX="130.0" layoutY="76.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el código del producto" />
                   <TextField fx:id="inputValorUnitario" layoutX="130.0" layoutY="110.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese el valor unitario del producto" />
                   <Separator layoutX="14.0" layoutY="265.0" prefHeight="5.0" prefWidth="751.0" />
                   <Button fx:id="btnNuevo" layoutX="221.0" layoutY="278.0" mnemonicParsing="false" onAction="#nuevoProductoEvent" prefHeight="25.0" prefWidth="109.0" text="NUEVO" />
@@ -47,13 +46,12 @@
                   <ComboBox fx:id="comboTipoProducto" layoutX="511.0" layoutY="110.0" onAction="#refrescarAtributosTipoProducto" prefHeight="25.0" prefWidth="257.0" />
                   <Label layoutX="9.0" layoutY="146.0" text="Cantidad Inventario:" />
                   <TextField fx:id="inputCantidadInventario" layoutX="130.0" layoutY="142.0" prefHeight="25.0" prefWidth="257.0" promptText="Ingrese las existencias del producto" />
-                  <TextArea fx:id="inputDescripcion" layoutX="503.0" layoutY="42.0" prefHeight="61.0" prefWidth="263.0" />
+                  <TextArea fx:id="inputDescripcion" layoutX="509.0" layoutY="42.0" prefHeight="61.0" prefWidth="257.0" />
                   <Label fx:id="labelFechaVencimiento" layoutX="429.0" layoutY="146.0" text="Fecha Vencimiento:" />
                   <DatePicker fx:id="dateFechaVencimiento" layoutX="535.0" layoutY="142.0" onAction="#getFechaVencimiento" prefHeight="25.0" prefWidth="233.0" />
                   <Label fx:id="labelCodigoAprobacion" layoutX="9.0" layoutY="181.0" text="Código Aprobación:" />
                   <Label fx:id="labelTemperatura" layoutX="9.0" layoutY="211.0" text="Temperatura Recomendada" />
-                  <TextField fx:id="inputCodigoAprobacion" layoutX="130.0" layoutY="177.0" prefHeight="25.0"
-                             prefWidth="257.0" promptText="Código de aprobación del producto" />
+                  <TextField fx:id="inputCodigoAprobacion" layoutX="130.0" layoutY="177.0" prefHeight="25.0" prefWidth="257.0" promptText="Código de aprobación del producto" />
                   <TextField fx:id="inputTemperatura" layoutX="166.0" layoutY="207.0" prefHeight="25.0" prefWidth="220.0" text="°C" />
                   <Label fx:id="labelFechaEnvasado" layoutX="428.0" layoutY="181.0" text="Fecha Envasado:" />
                   <Label fx:id="labelPeso" layoutX="428.0" layoutY="211.0" text="Peso Envase:" />
